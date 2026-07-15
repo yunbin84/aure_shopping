@@ -69,9 +69,15 @@ function HomeNavbar({
   return (
     <>
       <div className="home-utility-bar">
-        <button type="button" onClick={onJoin}>
-          회원가입
-        </button>
+        {user ? (
+          <button type="button" onClick={onMyOrders}>
+            마이페이지
+          </button>
+        ) : (
+          <button type="button" onClick={onJoin}>
+            회원가입
+          </button>
+        )}
         <span aria-hidden="true">|</span>
         <button type="button" onClick={onCustomerCenter}>
           고객센터
