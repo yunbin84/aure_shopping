@@ -4066,10 +4066,18 @@ input[type="checkbox"] {
     font-size: 36px;
   }
 
-  .home-nav-left,
-  .home-nav-actions {
+  .home-nav-left {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .home-nav-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .home-nav-actions .home-icon-button {
+    margin-left: auto;
   }
 
   .home-nav-links {
