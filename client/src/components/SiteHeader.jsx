@@ -2,7 +2,7 @@ function SiteHeader({ currentPage, onGoCustomerCenter, onGoHome, onGoJoin, onGoL
   return (
     <header className="site-header">
       <button className="brand" type="button" onClick={onGoHome}>
-        shoppingmall
+        AURÉ
       </button>
       <nav className="site-nav" aria-label="상단 메뉴">
         <button type="button" onClick={onGoHome}>
