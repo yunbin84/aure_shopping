@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000";
 
 export const createUser = async ({ email, name, password, user_type, adress }) => {
   const response = await fetch(`${API_BASE_URL}/users`, {

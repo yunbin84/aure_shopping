@@ -1,4 +1,11 @@
-function HomeFooter({ footerGroups }) {
+const SHOP_LINK_CATEGORY_KEYS = {
+  신상품: "new",
+  베스트: "best",
+  레깅스: "leggings",
+  브라탑: "bra",
+};
+
+function HomeFooter({ footerGroups, onCategoryClick }) {
   return (
     <footer className="home-footer">
       <div>
@@ -12,11 +19,19 @@ function HomeFooter({ footerGroups }) {
       {footerGroups.map((group) => (
         <div key={group.title}>
           <h3>{group.title}</h3>
-          {group.links.map((link) => (
-            <button key={link} type="button">
-              {link}
-            </button>
-          ))}
+          {group.links.map((link) => {
+            const categoryKey = group.title === "쇼핑" ? SHOP_LINK_CATEGORY_KEYS[link] : null;
+
+            return (
+              <button
+                key={link}
+                type="button"
+                onClick={categoryKey ? () => onCategoryClick(categoryKey) : undefined}
+              >
+                {link}
+              </button>
+            );
+          })}
         </div>
       ))}
     </footer>

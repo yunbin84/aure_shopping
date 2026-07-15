@@ -178,7 +178,7 @@ function ProductListPage({
         ) : null}
       </section>
 
-      <HomeFooter footerGroups={footerGroups} />
+      <HomeFooter footerGroups={footerGroups} onCategoryClick={onCategoryClick} />
     </main>
   );
 }

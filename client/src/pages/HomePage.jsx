@@ -137,7 +137,7 @@ function HomePage({ onAdmin, onCart, onCategoryClick, onGoHome, onLogin, onMyOrd
       <SaleBanner />
       <LookbookSection lookbookItems={lookbookItems} />
       <NewsletterSection />
-      <HomeFooter footerGroups={footerGroups} />
+      <HomeFooter footerGroups={footerGroups} onCategoryClick={onCategoryClick} />
     </main>
   );
 }
