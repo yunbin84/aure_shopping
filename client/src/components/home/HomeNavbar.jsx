@@ -173,7 +173,18 @@ function HomeNavbar({
         )}
 
         <button className="home-icon-button" type="button" aria-label="검색">
-          ⌕
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+            <line
+              x1="21"
+              y1="21"
+              x2="16.65"
+              y2="16.65"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
         </button>
         <button
           className="home-cart-button"
@@ -181,8 +192,24 @@ function HomeNavbar({
           aria-label={`장바구니 ${cartCount}개`}
           onClick={onCart}
         >
-          <span className="home-cart-icon" aria-hidden="true" />
-          <b>{cartCount}</b>
+          <span className="home-cart-icon-wrap">
+            <svg className="home-cart-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M6.5 8h11l-0.9 11.1a2 2 0 0 1-2 1.9H9.4a2 2 0 0 1-2-1.9L6.5 8z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M9 8V6.5a3 3 0 0 1 6 0V8"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <b>{cartCount}</b>
+          </span>
         </button>
       </div>
 
