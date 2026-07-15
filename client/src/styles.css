@@ -1213,6 +1213,7 @@ button {
   font-weight: 700;
   line-height: 1.8;
   margin-top: 24px;
+  word-break: keep-all;
 }
 
 .home-hero-buttons {
