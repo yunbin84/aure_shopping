@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AdminPage from "./pages/admin/AdminPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import ChekoutPage from "./pages/ChekoutPage.jsx";
+import CustomerCenterPage from "./pages/CustomerCenterPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import JoinPage from "./pages/JoinPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -91,6 +92,7 @@ function App() {
   const goHome = () => navigate("home");
   const goJoin = () => navigate("join");
   const goLogin = () => navigate("login");
+  const goCustomerCenter = () => navigate("customer-center");
   const goCart = () => navigate("cart");
   const goOrder = () => navigate("order");
   const goOrderResult = (result) => navigate("order-complete", { orderResult: result });
@@ -117,6 +119,7 @@ function App() {
     return (
       <LoginPage
         onGoCart={goCart}
+        onGoCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
         onGoJoin={goJoin}
         onGoLogin={goLogin}
@@ -125,7 +128,29 @@ function App() {
   }
 
   if (page === "join") {
-    return <JoinPage onGoHome={goHome} onGoJoin={goJoin} onGoLogin={goLogin} />;
+    return (
+      <JoinPage
+        onGoCustomerCenter={goCustomerCenter}
+        onGoHome={goHome}
+        onGoJoin={goJoin}
+        onGoLogin={goLogin}
+      />
+    );
+  }
+
+  if (page === "customer-center") {
+    return (
+      <CustomerCenterPage
+        onAdmin={goAdmin}
+        onCart={goCart}
+        onCategoryClick={goProductList}
+        onCustomerCenter={goCustomerCenter}
+        onGoHome={goHome}
+        onJoin={goJoin}
+        onLogin={goLogin}
+        onMyOrders={goMyOrders}
+      />
+    );
   }
 
   if (page === "cart") {
@@ -133,7 +158,9 @@ function App() {
       <CartPage
         onAdmin={goAdmin}
         onCategoryClick={goProductList}
+        onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
+        onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
         onOrder={goOrder}
@@ -147,7 +174,9 @@ function App() {
         onAdmin={goAdmin}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
+        onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
         onOrderResult={goOrderResult}
@@ -161,7 +190,9 @@ function App() {
         onAdmin={goAdmin}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
+        onJoin={goJoin}
         onLogin={goLogin}
         onViewOrder={goMyOrders}
         result={orderResult}
@@ -175,7 +206,9 @@ function App() {
         onAdmin={goAdmin}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
+        onJoin={goJoin}
         onLogin={goLogin}
         onSelectOrder={goOrderCancel}
       />
@@ -189,7 +222,9 @@ function App() {
         onBack={goMyOrders}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
+        onJoin={goJoin}
         onLogin={goLogin}
         order={activeOrder}
       />
@@ -204,7 +239,9 @@ function App() {
         onBuyNow={goOrder}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
+        onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
         productId={selectedProductId}
@@ -219,7 +256,9 @@ function App() {
         onAdmin={goAdmin}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
+        onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
         onProductClick={goProductDetail}
@@ -232,6 +271,7 @@ function App() {
     <HomePage
       onAdmin={goAdmin}
       onJoin={goJoin}
+      onCustomerCenter={goCustomerCenter}
       onLogin={goLogin}
       onCart={goCart}
       onCategoryClick={goProductList}

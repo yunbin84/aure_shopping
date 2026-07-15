@@ -6,7 +6,16 @@ const formatPrice = (price) => `${Number(price).toLocaleString("ko-KR")}원`;
 const SHIPPING_FEE = 2500;
 const DISCOUNT_AMOUNT = 2000;
 
-function CartPage({ onAdmin, onCategoryClick, onGoHome, onLogin, onMyOrders, onOrder }) {
+function CartPage({
+  onAdmin,
+  onCategoryClick,
+  onCustomerCenter,
+  onGoHome,
+  onJoin,
+  onLogin,
+  onMyOrders,
+  onOrder,
+}) {
   const [cart, setCart] = useState({ items: [] });
   const [status, setStatus] = useState("loading");
   const [cartMessage, setCartMessage] = useState("");
@@ -113,7 +122,9 @@ function CartPage({ onAdmin, onCategoryClick, onGoHome, onLogin, onMyOrders, onO
         onAdmin={onAdmin}
         onCart={() => {}}
         onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
         onGoHome={onGoHome}
+        onJoin={onJoin}
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}

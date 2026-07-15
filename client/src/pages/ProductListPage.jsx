@@ -22,7 +22,9 @@ function ProductListPage({
   onAdmin,
   onCart,
   onCategoryClick,
+  onCustomerCenter,
   onGoHome,
+  onJoin,
   onLogin,
   onMyOrders,
   onProductClick,
@@ -109,7 +111,9 @@ function ProductListPage({
         onAdmin={onAdmin}
         onCart={onCart}
         onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
         onGoHome={onGoHome}
+        onJoin={onJoin}
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}

@@ -12,7 +12,9 @@ function ChekoutPage({
   onAdmin,
   onCart,
   onCategoryClick,
+  onCustomerCenter,
   onGoHome,
+  onJoin,
   onLogin,
   onMyOrders,
   onOrderResult,
@@ -187,7 +189,9 @@ function ChekoutPage({
         onAdmin={onAdmin}
         onCart={onCart}
         onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
         onGoHome={onGoHome}
+        onJoin={onJoin}
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}

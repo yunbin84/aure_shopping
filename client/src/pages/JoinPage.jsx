@@ -3,7 +3,7 @@ import JoinForm from "../components/JoinForm.jsx";
 import SiteHeader from "../components/SiteHeader.jsx";
 import { createUser } from "../api/users.js";
 
-function JoinPage({ onGoHome, onGoJoin, onGoLogin }) {
+function JoinPage({ onGoCustomerCenter, onGoHome, onGoJoin, onGoLogin }) {
   const [isJoined, setIsJoined] = useState(false);
   const handleJoin = (userData) => createUser(userData);
 
@@ -11,6 +11,7 @@ function JoinPage({ onGoHome, onGoJoin, onGoLogin }) {
     <main className="join-page">
       <SiteHeader
         currentPage="join"
+        onGoCustomerCenter={onGoCustomerCenter}
         onGoHome={onGoHome}
         onGoJoin={onGoJoin}
         onGoLogin={onGoLogin}

@@ -8,6 +8,7 @@ const MEGA_MENU_LINKS = [
   { key: "best", label: "베스트" },
   { key: "leggings", label: "레깅스" },
   { key: "bra", label: "브라탑" },
+  { key: "yogapants", label: "요가팬츠" },
   { key: "outer", label: "아우터" },
   { key: "shirt", label: "티셔츠" },
   { key: "sale", label: "세일" },
@@ -18,8 +19,10 @@ function HomeNavbar({
   onAdmin,
   onCart,
   onCategoryClick,
+  onCustomerCenter,
   onGoHome,
   isMenuOpen,
+  onJoin,
   onLogin,
   onLogout,
   onMyOrders,
@@ -64,7 +67,21 @@ function HomeNavbar({
   };
 
   return (
-    <header className="home-navbar">
+    <>
+      <div className="home-utility-bar">
+        <button type="button" onClick={onLogin}>
+          로그인
+        </button>
+        <span aria-hidden="true">|</span>
+        <button type="button" onClick={onJoin}>
+          회원가입
+        </button>
+        <span aria-hidden="true">|</span>
+        <button type="button" onClick={onCustomerCenter}>
+          고객센터
+        </button>
+      </div>
+      <header className="home-navbar">
       <div className="home-nav-left">
         <button
           aria-expanded={isMegaMenuOpen}
@@ -202,7 +219,8 @@ function HomeNavbar({
           </button>
         </div>
       ) : null}
-    </header>
+      </header>
+    </>
   );
 }
 

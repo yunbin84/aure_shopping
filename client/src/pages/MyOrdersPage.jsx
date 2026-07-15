@@ -30,7 +30,16 @@ function ClockIcon() {
   );
 }
 
-function MyOrdersPage({ onAdmin, onCart, onCategoryClick, onGoHome, onLogin, onSelectOrder }) {
+function MyOrdersPage({
+  onAdmin,
+  onCart,
+  onCategoryClick,
+  onCustomerCenter,
+  onGoHome,
+  onJoin,
+  onLogin,
+  onSelectOrder,
+}) {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [orders, setOrders] = useState([]);
@@ -86,7 +95,9 @@ function MyOrdersPage({ onAdmin, onCart, onCategoryClick, onGoHome, onLogin, onS
         onAdmin={onAdmin}
         onCart={onCart}
         onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
         onGoHome={onGoHome}
+        onJoin={onJoin}
         onLogin={onLogin}
         onLogout={handleLogout}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}

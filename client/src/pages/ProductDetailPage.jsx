@@ -99,7 +99,9 @@ function ProductDetailPage({
   onBuyNow,
   onCart,
   onCategoryClick,
+  onCustomerCenter,
   onGoHome,
+  onJoin,
   onLogin,
   onMyOrders,
   productId,
@@ -293,7 +295,9 @@ function ProductDetailPage({
       onAdmin={onAdmin}
       onCart={onCart}
       onCategoryClick={onCategoryClick}
+      onCustomerCenter={onCustomerCenter}
       onGoHome={onGoHome}
+      onJoin={onJoin}
       onLogin={onLogin}
       onLogout={handleLogout}
       onMyOrders={onMyOrders}

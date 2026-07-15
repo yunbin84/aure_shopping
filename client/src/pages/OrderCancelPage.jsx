@@ -16,7 +16,17 @@ const ORDER_STATUS_LABEL = {
 
 const CANCEL_REASONS = ["고객변심", "서비스불만족", "배송지연", "기타"];
 
-function OrderCancelPage({ onAdmin, onBack, onCart, onCategoryClick, onGoHome, onLogin, order }) {
+function OrderCancelPage({
+  onAdmin,
+  onBack,
+  onCart,
+  onCategoryClick,
+  onCustomerCenter,
+  onGoHome,
+  onJoin,
+  onLogin,
+  order,
+}) {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [reason, setReason] = useState("");
@@ -72,7 +82,9 @@ function OrderCancelPage({ onAdmin, onBack, onCart, onCategoryClick, onGoHome, o
         onAdmin={onAdmin}
         onCart={onCart}
         onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
         onGoHome={onGoHome}
+        onJoin={onJoin}
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onBack}

@@ -47,7 +47,17 @@ const mapApiProductToHomeProduct = (product, index) => ({
   uiKey: product._id,
 });
 
-function HomePage({ onAdmin, onCart, onCategoryClick, onGoHome, onLogin, onMyOrders, onProductClick }) {
+function HomePage({
+  onAdmin,
+  onCart,
+  onCategoryClick,
+  onCustomerCenter,
+  onGoHome,
+  onJoin,
+  onLogin,
+  onMyOrders,
+  onProductClick,
+}) {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mainProducts, setMainProducts] = useState([]);
@@ -117,7 +127,9 @@ function HomePage({ onAdmin, onCart, onCategoryClick, onGoHome, onLogin, onMyOrd
         onAdmin={onAdmin}
         onCart={onCart}
         onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
         onGoHome={onGoHome}
+        onJoin={onJoin}
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}

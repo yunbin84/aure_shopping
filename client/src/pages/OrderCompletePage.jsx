@@ -31,7 +31,9 @@ function OrderCompletePage({
   onAdmin,
   onCart,
   onCategoryClick,
+  onCustomerCenter,
   onGoHome,
+  onJoin,
   onLogin,
   onViewOrder,
   result,
@@ -66,7 +68,9 @@ function OrderCompletePage({
         onAdmin={onAdmin}
         onCart={onCart}
         onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
         onGoHome={onGoHome}
+        onJoin={onJoin}
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onViewOrder}

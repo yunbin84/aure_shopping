@@ -1,4 +1,4 @@
-function SiteHeader({ currentPage, onGoHome, onGoJoin, onGoLogin }) {
+function SiteHeader({ currentPage, onGoCustomerCenter, onGoHome, onGoJoin, onGoLogin }) {
   return (
     <header className="site-header">
       <button className="brand" type="button" onClick={onGoHome}>
@@ -21,6 +21,13 @@ function SiteHeader({ currentPage, onGoHome, onGoJoin, onGoLogin }) {
           onClick={onGoJoin}
         >
           회원가입
+        </button>
+        <button
+          type="button"
+          aria-current={currentPage === "customer-center" ? "page" : undefined}
+          onClick={onGoCustomerCenter}
+        >
+          고객센터
         </button>
       </nav>
     </header>
