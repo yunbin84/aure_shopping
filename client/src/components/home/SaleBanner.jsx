@@ -1,6 +1,6 @@
 import seasonOffImage from "../../assets/home/season-off-clean.png";
 
-function SaleBanner() {
+function SaleBanner({ onCategoryClick }) {
   return (
     <section className="home-sale-banner">
       <img src={seasonOffImage} alt="봄맞이 시즌오프" />
@@ -15,7 +15,9 @@ function SaleBanner() {
           베스트셀러 레깅스부터 신상 아우터까지, 지금이 가장 좋은 기회예요.
           기간 한정 특가로 만나보세요.
         </span>
-        <button type="button">할인 상품 보기 →</button>
+        <button type="button" onClick={() => onCategoryClick("sale")}>
+          할인 상품 보기 →
+        </button>
       </div>
     </section>
   );

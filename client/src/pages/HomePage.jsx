@@ -134,7 +134,7 @@ function HomePage({ onAdmin, onCart, onCategoryClick, onGoHome, onLogin, onMyOrd
         products={mainProducts}
         status={productStatus}
       />
-      <SaleBanner />
+      <SaleBanner onCategoryClick={onCategoryClick} />
       <LookbookSection lookbookItems={lookbookItems} />
       <NewsletterSection />
       <HomeFooter footerGroups={footerGroups} onCategoryClick={onCategoryClick} />
