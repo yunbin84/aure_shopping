@@ -6,10 +6,10 @@ const SHOP_LINK_CATEGORY_KEYS = {
 };
 
 const SUPPORT_LINK_TARGETS = {
-  "주문/배송 조회": "myOrders",
-  "교환/반품 안내": "customerCenter",
-  "사이즈 가이드": "customerCenter",
-  "1:1 문의": "customerCenter",
+  "주문/배송 조회": { type: "myOrders" },
+  "교환/반품 안내": { type: "customerCenter", section: "return" },
+  "사이즈 가이드": { type: "customerCenter", section: "size-guide" },
+  "1:1 문의": { type: "customerCenter", section: "inquiry" },
 };
 
 function HomeFooter({ footerGroups, onCategoryClick, onCustomerCenter, onMyOrders }) {
@@ -22,12 +22,12 @@ function HomeFooter({ footerGroups, onCategoryClick, onCustomerCenter, onMyOrder
     if (group.title === "고객지원") {
       const target = SUPPORT_LINK_TARGETS[link];
 
-      if (target === "myOrders") {
+      if (target?.type === "myOrders") {
         return onMyOrders;
       }
 
-      if (target === "customerCenter") {
-        return onCustomerCenter;
+      if (target?.type === "customerCenter") {
+        return () => onCustomerCenter(target.section);
       }
     }
 

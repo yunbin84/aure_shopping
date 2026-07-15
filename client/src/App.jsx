@@ -23,12 +23,20 @@ const CATEGORY_FILTERS = {
   sale: { category: undefined, title: "세일" },
 };
 
-const buildHistoryState = ({ page, selectedProductId, orderResult, activeOrder, productListFilter }) => ({
+const buildHistoryState = ({
   page,
   selectedProductId,
   orderResult,
   activeOrder,
   productListFilter,
+  customerCenterSection,
+}) => ({
+  page,
+  selectedProductId,
+  orderResult,
+  activeOrder,
+  productListFilter,
+  customerCenterSection,
 });
 
 function App() {
@@ -37,6 +45,7 @@ function App() {
   const [orderResult, setOrderResult] = useState(null);
   const [activeOrder, setActiveOrder] = useState(null);
   const [productListFilter, setProductListFilter] = useState(CATEGORY_FILTERS.new);
+  const [customerCenterSection, setCustomerCenterSection] = useState(null);
 
   useEffect(() => {
     window.history.replaceState(
@@ -46,6 +55,7 @@ function App() {
         orderResult: null,
         activeOrder: null,
         productListFilter: CATEGORY_FILTERS.new,
+        customerCenterSection: null,
       }),
       "",
     );
@@ -63,6 +73,7 @@ function App() {
       setOrderResult(state.orderResult || null);
       setActiveOrder(state.activeOrder || null);
       setProductListFilter(state.productListFilter || CATEGORY_FILTERS.new);
+      setCustomerCenterSection(state.customerCenterSection || null);
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -77,6 +88,8 @@ function App() {
       orderResult: "orderResult" in updates ? updates.orderResult : orderResult,
       activeOrder: "activeOrder" in updates ? updates.activeOrder : activeOrder,
       productListFilter: "productListFilter" in updates ? updates.productListFilter : productListFilter,
+      customerCenterSection:
+        "customerCenterSection" in updates ? updates.customerCenterSection : customerCenterSection,
     };
 
     setPage(nextState.page);
@@ -84,6 +97,7 @@ function App() {
     setOrderResult(nextState.orderResult);
     setActiveOrder(nextState.activeOrder);
     setProductListFilter(nextState.productListFilter);
+    setCustomerCenterSection(nextState.customerCenterSection);
 
     window.history.pushState(buildHistoryState(nextState), "");
   };
@@ -92,7 +106,8 @@ function App() {
   const goHome = () => navigate("home");
   const goJoin = () => navigate("join");
   const goLogin = () => navigate("login");
-  const goCustomerCenter = () => navigate("customer-center");
+  const goCustomerCenter = (section) =>
+    navigate("customer-center", { customerCenterSection: typeof section === "string" ? section : null });
   const goCart = () => navigate("cart");
   const goOrder = () => navigate("order");
   const goOrderResult = (result) => navigate("order-complete", { orderResult: result });
@@ -149,6 +164,7 @@ function App() {
         onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
+        targetSection={customerCenterSection}
       />
     );
   }

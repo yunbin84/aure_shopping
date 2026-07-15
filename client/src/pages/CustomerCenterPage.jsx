@@ -104,6 +104,13 @@ const sizeGuideRows = [
   { size: "XL", chest: "98-102", waist: "80-84", hip: "104-108" },
 ];
 
+const SECTION_ID_BY_TARGET = {
+  faq: "cc-faq",
+  return: "cc-return",
+  "size-guide": "cc-size-guide",
+  inquiry: "cc-inquiry",
+};
+
 function CustomerCenterPage({
   onAdmin,
   onCart,
@@ -113,6 +120,7 @@ function CustomerCenterPage({
   onJoin,
   onLogin,
   onMyOrders,
+  targetSection,
 }) {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -128,6 +136,15 @@ function CustomerCenterPage({
       setUser(JSON.parse(savedUser));
     }
   }, []);
+
+  useEffect(() => {
+    const elementId = targetSection ? SECTION_ID_BY_TARGET[targetSection] : null;
+    const element = elementId ? document.getElementById(elementId) : null;
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [targetSection]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
