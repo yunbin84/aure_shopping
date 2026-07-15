@@ -18,6 +18,7 @@ function ChekoutPage({
   onLogin,
   onMyOrders,
   onOrderResult,
+  onSearch,
 }) {
   const [cart, setCart] = useState({ items: [] });
   const [status, setStatus] = useState("loading");
@@ -195,6 +196,7 @@ function ChekoutPage({
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}
+        onSearch={onSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />

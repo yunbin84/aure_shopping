@@ -126,6 +126,10 @@ function App() {
   const goProductDetail = (productId) => navigate("product-detail", { selectedProductId: productId });
   const goProductList = (key) =>
     navigate("product-list", { productListFilter: CATEGORY_FILTERS[key] || CATEGORY_FILTERS.new });
+  const goSearch = (keyword) =>
+    navigate("product-list", {
+      productListFilter: { category: undefined, title: `'${keyword}' 검색결과`, keyword },
+    });
 
   if (page === "admin") {
     return (
@@ -136,6 +140,7 @@ function App() {
         onGoHome={goHome}
         onGoLogin={goLogin}
         onGoMyOrders={goMyOrders}
+        onGoSearch={goSearch}
       />
     );
   }
@@ -148,6 +153,7 @@ function App() {
         onGoHome={goHome}
         onGoJoin={goJoin}
         onGoLogin={goLogin}
+        onGoSearch={goSearch}
       />
     );
   }
@@ -175,6 +181,7 @@ function App() {
         onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
+        onSearch={goSearch}
         targetSection={customerCenterSection}
       />
     );
@@ -192,6 +199,7 @@ function App() {
         onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
+        onSearch={goSearch}
         targetSection={companySection}
       />
     );
@@ -208,6 +216,7 @@ function App() {
         onLogin={goLogin}
         onMyOrders={goMyOrders}
         onOrder={goOrder}
+        onSearch={goSearch}
       />
     );
   }
@@ -224,6 +233,7 @@ function App() {
         onLogin={goLogin}
         onMyOrders={goMyOrders}
         onOrderResult={goOrderResult}
+        onSearch={goSearch}
       />
     );
   }
@@ -238,6 +248,7 @@ function App() {
         onGoHome={goHome}
         onJoin={goJoin}
         onLogin={goLogin}
+        onSearch={goSearch}
         onViewOrder={goMyOrders}
         result={orderResult}
       />
@@ -254,6 +265,7 @@ function App() {
         onGoHome={goHome}
         onJoin={goJoin}
         onLogin={goLogin}
+        onSearch={goSearch}
         onSelectOrder={goOrderCancel}
       />
     );
@@ -270,6 +282,7 @@ function App() {
         onGoHome={goHome}
         onJoin={goJoin}
         onLogin={goLogin}
+        onSearch={goSearch}
         order={activeOrder}
       />
     );
@@ -289,6 +302,7 @@ function App() {
         onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
+        onSearch={goSearch}
         productId={selectedProductId}
       />
     );
@@ -298,6 +312,7 @@ function App() {
     return (
       <ProductListPage
         category={productListFilter.category}
+        keyword={productListFilter.keyword}
         onAdmin={goAdmin}
         onCart={goCart}
         onCategoryClick={goProductList}
@@ -308,6 +323,7 @@ function App() {
         onLogin={goLogin}
         onMyOrders={goMyOrders}
         onProductClick={goProductDetail}
+        onSearch={goSearch}
         title={productListFilter.title}
       />
     );
@@ -325,6 +341,7 @@ function App() {
       onGoHome={goHome}
       onMyOrders={goMyOrders}
       onProductClick={goProductDetail}
+      onSearch={goSearch}
     />
   );
 }

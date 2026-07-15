@@ -35,6 +35,7 @@ function OrderCompletePage({
   onGoHome,
   onJoin,
   onLogin,
+  onSearch,
   onViewOrder,
   result,
 }) {
@@ -74,6 +75,7 @@ function OrderCompletePage({
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onViewOrder}
+        onSearch={onSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />

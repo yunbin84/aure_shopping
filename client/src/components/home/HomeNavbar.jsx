@@ -26,11 +26,14 @@ function HomeNavbar({
   onLogin,
   onLogout,
   onMyOrders,
+  onSearch,
   onToggleMenu,
   user,
 }) {
   const [cartCount, setCartCount] = useState(0);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState("");
   const userName = user?.name || "회원";
 
   useEffect(() => {
@@ -64,6 +67,24 @@ function HomeNavbar({
   const handleMegaMenuSelect = (key) => {
     setIsMegaMenuOpen(false);
     onCategoryClick(key);
+  };
+
+  const handleToggleSearch = () => {
+    setIsSearchOpen((prev) => !prev);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    const trimmed = searchKeyword.trim();
+
+    if (!trimmed) {
+      return;
+    }
+
+    onSearch(trimmed);
+    setIsSearchOpen(false);
+    setSearchKeyword("");
   };
 
   return (
@@ -172,20 +193,55 @@ function HomeNavbar({
           </button>
         )}
 
-        <button className="home-icon-button" type="button" aria-label="검색">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
-            <line
-              x1="21"
-              y1="21"
-              x2="16.65"
-              y2="16.65"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+        <div className="home-search-wrap">
+          <button
+            aria-expanded={isSearchOpen}
+            aria-label="검색"
+            className="home-icon-button"
+            type="button"
+            onClick={handleToggleSearch}
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+              <line
+                x1="21"
+                y1="21"
+                x2="16.65"
+                y2="16.65"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+
+          {isSearchOpen ? (
+            <form className="home-search-panel" onSubmit={handleSearchSubmit}>
+              <input
+                autoFocus
+                aria-label="상품 검색"
+                onChange={(event) => setSearchKeyword(event.target.value)}
+                placeholder="상품명을 검색해보세요"
+                type="text"
+                value={searchKeyword}
+              />
+              <button aria-label="검색하기" type="submit">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+                  <line
+                    x1="21"
+                    y1="21"
+                    x2="16.65"
+                    y2="16.65"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+            </form>
+          ) : null}
+        </div>
         <button
           className="home-cart-button"
           type="button"

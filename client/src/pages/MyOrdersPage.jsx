@@ -38,6 +38,7 @@ function MyOrdersPage({
   onGoHome,
   onJoin,
   onLogin,
+  onSearch,
   onSelectOrder,
 }) {
   const [user, setUser] = useState(null);
@@ -100,6 +101,7 @@ function MyOrdersPage({
         onJoin={onJoin}
         onLogin={onLogin}
         onLogout={handleLogout}
+        onSearch={onSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />

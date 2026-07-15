@@ -11,7 +11,15 @@ const adminTabs = [
   { id: "order", label: "주문관리" },
 ];
 
-function AdminPage({ onGoAdmin, onGoCart, onGoCategoryClick, onGoHome, onGoLogin, onGoMyOrders }) {
+function AdminPage({
+  onGoAdmin,
+  onGoCart,
+  onGoCategoryClick,
+  onGoHome,
+  onGoLogin,
+  onGoMyOrders,
+  onGoSearch,
+}) {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [status, setStatus] = useState("loading");
@@ -76,6 +84,7 @@ function AdminPage({ onGoAdmin, onGoCart, onGoCategoryClick, onGoHome, onGoLogin
         onLogin={onGoLogin}
         onLogout={handleLogout}
         onMyOrders={onGoMyOrders}
+        onSearch={onGoSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />

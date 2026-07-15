@@ -25,6 +25,7 @@ function OrderCancelPage({
   onGoHome,
   onJoin,
   onLogin,
+  onSearch,
   order,
 }) {
   const [user, setUser] = useState(null);
@@ -88,6 +89,7 @@ function OrderCancelPage({
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onBack}
+        onSearch={onSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />

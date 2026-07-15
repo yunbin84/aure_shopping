@@ -1,6 +1,6 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000";
 
-export const getProducts = async ({ page = 1, limit = 2, category } = {}) => {
+export const getProducts = async ({ page = 1, limit = 2, category, keyword } = {}) => {
   const params = new URLSearchParams({
     page: String(page),
     limit: String(limit),
@@ -8,6 +8,10 @@ export const getProducts = async ({ page = 1, limit = 2, category } = {}) => {
 
   if (category) {
     params.set("category", category);
+  }
+
+  if (keyword) {
+    params.set("keyword", keyword);
   }
 
   const response = await fetch(`${API_BASE_URL}/products?${params.toString()}`);

@@ -105,6 +105,7 @@ function ProductDetailPage({
   onJoin,
   onLogin,
   onMyOrders,
+  onSearch,
   productId,
 }) {
   const [product, setProduct] = useState(null);
@@ -302,6 +303,7 @@ function ProductDetailPage({
       onLogin={onLogin}
       onLogout={handleLogout}
       onMyOrders={onMyOrders}
+      onSearch={onSearch}
       onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
       user={user}
     />

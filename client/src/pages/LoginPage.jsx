@@ -3,7 +3,7 @@ import { getMyProfile, loginUser } from "../api/users.js";
 import HomeNavbar from "../components/home/HomeNavbar.jsx";
 import LoginForm from "../components/LoginForm.jsx";
 
-function LoginPage({ onGoCart, onGoCustomerCenter, onGoHome, onGoJoin, onGoLogin }) {
+function LoginPage({ onGoCart, onGoCustomerCenter, onGoHome, onGoJoin, onGoLogin, onGoSearch }) {
   const [isCheckingToken, setIsCheckingToken] = useState(true);
   const handleLogin = (userData) => loginUser(userData);
 
@@ -42,6 +42,7 @@ function LoginPage({ onGoCart, onGoCustomerCenter, onGoHome, onGoJoin, onGoLogin
           onJoin={onGoJoin}
           onLogin={onGoLogin}
           onLogout={() => {}}
+          onSearch={onGoSearch}
           onToggleMenu={() => {}}
           user={null}
         />
@@ -61,6 +62,7 @@ function LoginPage({ onGoCart, onGoCustomerCenter, onGoHome, onGoJoin, onGoLogin
         onJoin={onGoJoin}
         onLogin={onGoLogin}
         onLogout={() => {}}
+        onSearch={onGoSearch}
         onToggleMenu={() => {}}
         user={null}
       />

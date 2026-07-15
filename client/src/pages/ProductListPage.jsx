@@ -19,6 +19,7 @@ const formatPrice = (price) => `${Number(price).toLocaleString("ko-KR")}원`;
 
 function ProductListPage({
   category,
+  keyword,
   onAdmin,
   onCart,
   onCategoryClick,
@@ -29,6 +30,7 @@ function ProductListPage({
   onLogin,
   onMyOrders,
   onProductClick,
+  onSearch,
   title,
 }) {
   const [user, setUser] = useState(null);
@@ -70,14 +72,14 @@ function ProductListPage({
 
   useEffect(() => {
     setPage(1);
-  }, [category]);
+  }, [category, keyword]);
 
   useEffect(() => {
     const loadProducts = async () => {
       setStatus("loading");
 
       try {
-        const data = await getProducts({ page, limit: 12, category });
+        const data = await getProducts({ page, limit: 12, category, keyword });
         setProducts(data.products || []);
         setPagination(
           data.pagination || {
@@ -95,7 +97,7 @@ function ProductListPage({
     };
 
     loadProducts();
-  }, [page, category]);
+  }, [page, category, keyword]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -118,6 +120,7 @@ function ProductListPage({
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}
+        onSearch={onSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />

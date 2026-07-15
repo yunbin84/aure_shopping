@@ -15,6 +15,7 @@ function CartPage({
   onLogin,
   onMyOrders,
   onOrder,
+  onSearch,
 }) {
   const [cart, setCart] = useState({ items: [] });
   const [status, setStatus] = useState("loading");
@@ -128,6 +129,7 @@ function CartPage({
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}
+        onSearch={onSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />

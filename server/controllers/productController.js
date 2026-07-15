@@ -8,7 +8,16 @@ export const getProducts = async (req, res) => {
     const page = Math.max(Number(req.query.page) || 1, 1);
     const limit = Math.max(Number(req.query.limit) || 2, 1);
     const skip = (page - 1) * limit;
-    const query = req.query.category ? { category: req.query.category } : {};
+    const query = {};
+
+    if (req.query.category) {
+      query.category = req.query.category;
+    }
+
+    if (req.query.keyword) {
+      query.name = { $regex: req.query.keyword, $options: "i" };
+    }
+
     const totalProducts = await Product.countDocuments(query);
     const totalPages = Math.ceil(totalProducts / limit);
     const products = await Product.find(query)

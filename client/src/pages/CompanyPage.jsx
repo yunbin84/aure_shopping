@@ -39,6 +39,7 @@ function CompanyPage({
   onJoin,
   onLogin,
   onMyOrders,
+  onSearch,
   targetSection,
 }) {
   const [user, setUser] = useState(null);
@@ -97,6 +98,7 @@ function CompanyPage({
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}
+        onSearch={onSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />

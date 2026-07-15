@@ -58,6 +58,7 @@ function HomePage({
   onLogin,
   onMyOrders,
   onProductClick,
+  onSearch,
 }) {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -134,6 +135,7 @@ function HomePage({
         onLogin={onLogin}
         onLogout={handleLogout}
         onMyOrders={onMyOrders}
+        onSearch={onSearch}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
         user={user}
       />
