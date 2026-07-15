@@ -69,10 +69,6 @@ function HomeNavbar({
   return (
     <>
       <div className="home-utility-bar">
-        <button type="button" onClick={onLogin}>
-          로그인
-        </button>
-        <span aria-hidden="true">|</span>
         <button type="button" onClick={onJoin}>
           회원가입
         </button>
