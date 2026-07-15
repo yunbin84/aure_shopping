@@ -104,6 +104,11 @@ button {
   font-weight: 700;
 }
 
+.home-nav-links button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 .home-nav-actions {
   gap: 12px;
 }
@@ -3990,6 +3995,12 @@ input[type="checkbox"] {
     width: 100%;
     overflow-x: auto;
     padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .home-nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .home-welcome-button {
