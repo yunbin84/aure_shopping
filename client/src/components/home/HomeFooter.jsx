@@ -5,7 +5,35 @@ const SHOP_LINK_CATEGORY_KEYS = {
   브라탑: "bra",
 };
 
-function HomeFooter({ footerGroups, onCategoryClick }) {
+const SUPPORT_LINK_TARGETS = {
+  "주문/배송 조회": "myOrders",
+  "교환/반품 안내": "customerCenter",
+  "사이즈 가이드": "customerCenter",
+  "1:1 문의": "customerCenter",
+};
+
+function HomeFooter({ footerGroups, onCategoryClick, onCustomerCenter, onMyOrders }) {
+  const getLinkClickHandler = (group, link) => {
+    if (group.title === "쇼핑") {
+      const categoryKey = SHOP_LINK_CATEGORY_KEYS[link];
+      return categoryKey ? () => onCategoryClick(categoryKey) : undefined;
+    }
+
+    if (group.title === "고객지원") {
+      const target = SUPPORT_LINK_TARGETS[link];
+
+      if (target === "myOrders") {
+        return onMyOrders;
+      }
+
+      if (target === "customerCenter") {
+        return onCustomerCenter;
+      }
+    }
+
+    return undefined;
+  };
+
   return (
     <footer className="home-footer">
       <div>
@@ -19,19 +47,11 @@ function HomeFooter({ footerGroups, onCategoryClick }) {
       {footerGroups.map((group) => (
         <div key={group.title}>
           <h3>{group.title}</h3>
-          {group.links.map((link) => {
-            const categoryKey = group.title === "쇼핑" ? SHOP_LINK_CATEGORY_KEYS[link] : null;
-
-            return (
-              <button
-                key={link}
-                type="button"
-                onClick={categoryKey ? () => onCategoryClick(categoryKey) : undefined}
-              >
-                {link}
-              </button>
-            );
-          })}
+          {group.links.map((link) => (
+            <button key={link} type="button" onClick={getLinkClickHandler(group, link)}>
+              {link}
+            </button>
+          ))}
         </div>
       ))}
     </footer>

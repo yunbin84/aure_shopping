@@ -149,7 +149,12 @@ function HomePage({
       <SaleBanner onCategoryClick={onCategoryClick} />
       <LookbookSection lookbookItems={lookbookItems} />
       <NewsletterSection />
-      <HomeFooter footerGroups={footerGroups} onCategoryClick={onCategoryClick} />
+      <HomeFooter
+        footerGroups={footerGroups}
+        onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
+        onMyOrders={onMyOrders}
+      />
     </main>
   );
 }

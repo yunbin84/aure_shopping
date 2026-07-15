@@ -270,7 +270,12 @@ function CustomerCenterPage({
         {inquiryStatus ? <p className="cc-inquiry-status">{inquiryStatus}</p> : null}
       </section>
 
-      <HomeFooter footerGroups={footerGroups} onCategoryClick={onCategoryClick} />
+      <HomeFooter
+        footerGroups={footerGroups}
+        onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
+        onMyOrders={onMyOrders}
+      />
     </main>
   );
 }

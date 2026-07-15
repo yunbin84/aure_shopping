@@ -571,7 +571,12 @@ function ProductDetailPage({
         </section>
       </section>
 
-      <HomeFooter footerGroups={footerGroups} onCategoryClick={onCategoryClick} />
+      <HomeFooter
+        footerGroups={footerGroups}
+        onCategoryClick={onCategoryClick}
+        onCustomerCenter={onCustomerCenter}
+        onMyOrders={onMyOrders}
+      />
 
       {isCartModalOpen ? (
         <div className="cart-added-modal" role="dialog" aria-modal="true">
