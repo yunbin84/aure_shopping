@@ -12,7 +12,14 @@ const SUPPORT_LINK_TARGETS = {
   "1:1 문의": { type: "customerCenter", section: "inquiry" },
 };
 
-function HomeFooter({ footerGroups, onCategoryClick, onCustomerCenter, onMyOrders }) {
+const COMPANY_LINK_SECTIONS = {
+  "브랜드 스토리": "brand-story",
+  "매장 안내": "store",
+  "채용 정보": "careers",
+  "제휴 문의": "partnership",
+};
+
+function HomeFooter({ footerGroups, onCategoryClick, onCompany, onCustomerCenter, onMyOrders }) {
   const getLinkClickHandler = (group, link) => {
     if (group.title === "쇼핑") {
       const categoryKey = SHOP_LINK_CATEGORY_KEYS[link];
@@ -29,6 +36,11 @@ function HomeFooter({ footerGroups, onCategoryClick, onCustomerCenter, onMyOrder
       if (target?.type === "customerCenter") {
         return () => onCustomerCenter(target.section);
       }
+    }
+
+    if (group.title === "회사소개") {
+      const section = COMPANY_LINK_SECTIONS[link];
+      return section ? () => onCompany(section) : undefined;
     }
 
     return undefined;

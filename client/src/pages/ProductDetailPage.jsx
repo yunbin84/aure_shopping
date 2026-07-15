@@ -99,6 +99,7 @@ function ProductDetailPage({
   onBuyNow,
   onCart,
   onCategoryClick,
+  onCompany,
   onCustomerCenter,
   onGoHome,
   onJoin,
@@ -574,6 +575,7 @@ function ProductDetailPage({
       <HomeFooter
         footerGroups={footerGroups}
         onCategoryClick={onCategoryClick}
+        onCompany={onCompany}
         onCustomerCenter={onCustomerCenter}
         onMyOrders={onMyOrders}
       />

@@ -22,6 +22,7 @@ function ProductListPage({
   onAdmin,
   onCart,
   onCategoryClick,
+  onCompany,
   onCustomerCenter,
   onGoHome,
   onJoin,
@@ -185,6 +186,7 @@ function ProductListPage({
       <HomeFooter
         footerGroups={footerGroups}
         onCategoryClick={onCategoryClick}
+        onCompany={onCompany}
         onCustomerCenter={onCustomerCenter}
         onMyOrders={onMyOrders}
       />

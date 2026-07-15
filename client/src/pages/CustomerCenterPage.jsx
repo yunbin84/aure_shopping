@@ -115,6 +115,7 @@ function CustomerCenterPage({
   onAdmin,
   onCart,
   onCategoryClick,
+  onCompany,
   onCustomerCenter,
   onGoHome,
   onJoin,
@@ -290,6 +291,7 @@ function CustomerCenterPage({
       <HomeFooter
         footerGroups={footerGroups}
         onCategoryClick={onCategoryClick}
+        onCompany={onCompany}
         onCustomerCenter={onCustomerCenter}
         onMyOrders={onMyOrders}
       />

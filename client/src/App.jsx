@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AdminPage from "./pages/admin/AdminPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import ChekoutPage from "./pages/ChekoutPage.jsx";
+import CompanyPage from "./pages/CompanyPage.jsx";
 import CustomerCenterPage from "./pages/CustomerCenterPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import JoinPage from "./pages/JoinPage.jsx";
@@ -30,6 +31,7 @@ const buildHistoryState = ({
   activeOrder,
   productListFilter,
   customerCenterSection,
+  companySection,
 }) => ({
   page,
   selectedProductId,
@@ -37,6 +39,7 @@ const buildHistoryState = ({
   activeOrder,
   productListFilter,
   customerCenterSection,
+  companySection,
 });
 
 function App() {
@@ -46,6 +49,7 @@ function App() {
   const [activeOrder, setActiveOrder] = useState(null);
   const [productListFilter, setProductListFilter] = useState(CATEGORY_FILTERS.new);
   const [customerCenterSection, setCustomerCenterSection] = useState(null);
+  const [companySection, setCompanySection] = useState(null);
 
   useEffect(() => {
     window.history.replaceState(
@@ -56,6 +60,7 @@ function App() {
         activeOrder: null,
         productListFilter: CATEGORY_FILTERS.new,
         customerCenterSection: null,
+        companySection: null,
       }),
       "",
     );
@@ -74,6 +79,7 @@ function App() {
       setActiveOrder(state.activeOrder || null);
       setProductListFilter(state.productListFilter || CATEGORY_FILTERS.new);
       setCustomerCenterSection(state.customerCenterSection || null);
+      setCompanySection(state.companySection || null);
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -90,6 +96,7 @@ function App() {
       productListFilter: "productListFilter" in updates ? updates.productListFilter : productListFilter,
       customerCenterSection:
         "customerCenterSection" in updates ? updates.customerCenterSection : customerCenterSection,
+      companySection: "companySection" in updates ? updates.companySection : companySection,
     };
 
     setPage(nextState.page);
@@ -98,6 +105,7 @@ function App() {
     setActiveOrder(nextState.activeOrder);
     setProductListFilter(nextState.productListFilter);
     setCustomerCenterSection(nextState.customerCenterSection);
+    setCompanySection(nextState.companySection);
 
     window.history.pushState(buildHistoryState(nextState), "");
   };
@@ -108,6 +116,8 @@ function App() {
   const goLogin = () => navigate("login");
   const goCustomerCenter = (section) =>
     navigate("customer-center", { customerCenterSection: typeof section === "string" ? section : null });
+  const goCompany = (section) =>
+    navigate("company", { companySection: typeof section === "string" ? section : null });
   const goCart = () => navigate("cart");
   const goOrder = () => navigate("order");
   const goOrderResult = (result) => navigate("order-complete", { orderResult: result });
@@ -159,12 +169,30 @@ function App() {
         onAdmin={goAdmin}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCompany={goCompany}
         onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
         onJoin={goJoin}
         onLogin={goLogin}
         onMyOrders={goMyOrders}
         targetSection={customerCenterSection}
+      />
+    );
+  }
+
+  if (page === "company") {
+    return (
+      <CompanyPage
+        onAdmin={goAdmin}
+        onCart={goCart}
+        onCategoryClick={goProductList}
+        onCompany={goCompany}
+        onCustomerCenter={goCustomerCenter}
+        onGoHome={goHome}
+        onJoin={goJoin}
+        onLogin={goLogin}
+        onMyOrders={goMyOrders}
+        targetSection={companySection}
       />
     );
   }
@@ -255,6 +283,7 @@ function App() {
         onBuyNow={goOrder}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCompany={goCompany}
         onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
         onJoin={goJoin}
@@ -272,6 +301,7 @@ function App() {
         onAdmin={goAdmin}
         onCart={goCart}
         onCategoryClick={goProductList}
+        onCompany={goCompany}
         onCustomerCenter={goCustomerCenter}
         onGoHome={goHome}
         onJoin={goJoin}
@@ -287,6 +317,7 @@ function App() {
     <HomePage
       onAdmin={goAdmin}
       onJoin={goJoin}
+      onCompany={goCompany}
       onCustomerCenter={goCustomerCenter}
       onLogin={goLogin}
       onCart={goCart}
